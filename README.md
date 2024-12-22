@@ -30,8 +30,12 @@ npm start
 #### Node Version Conflicts
 ```bash
 node -v
-# If 17+, run with:
-export NODE_OPTIONS="--openssl-legacy-provider"
+# Windows PowerShell
+$env:NODE_OPTIONS="--openssl-legacy-provider"
+yarn start
+
+# or for npm
+$env:NODE_OPTIONS="--openssl-legacy-provider"
 npm start
 ```
 
