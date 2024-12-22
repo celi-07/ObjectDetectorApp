@@ -120,7 +120,7 @@ function App() {
             right: 0,
             textAlign: "center",
             zindex: 9,
-            width: "auto",
+            width: "100%",
             height: "auto",
           }}
         />
@@ -135,7 +135,7 @@ function App() {
             right: 0,
             textAlign: "center",
             zindex: 8,
-            width: "auto",
+            width: "100%",
             height: "auto",
           }}
         />
@@ -150,7 +150,8 @@ function App() {
             }}
           >
             Switch Camera
-          </button>      </header>
+          </button>
+      </header>
     </div>
   );
 }
