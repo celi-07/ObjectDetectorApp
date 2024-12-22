@@ -46,7 +46,7 @@ npm start
 
 ## Key Features
 - 🎥 Real-time object detection
-- 🔊 Natural voice announcements (In Development)
+- 🔊 Natural voice announcements
 - 📏 Distance estimation (In Development)
 - ⚡ Low-latency processing
 - 🎯 Multi-object tracking
