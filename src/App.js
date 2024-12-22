@@ -10,6 +10,17 @@ function App() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   const [spokenObjects, setSpokenObjects] = useState({}); // Tracks last spoken times for each object
+  const [facingMode, setFacingMode] = useState("user");
+
+  const videoConstraints = {
+    facingMode: facingMode,
+  };
+
+  const switchCamera = () => {
+    setFacingMode((prev) =>
+      prev === "user" ? { exact: "environment" } : "user"
+    );
+  };
 
   // Main function
   const runCoco = async () => {
@@ -100,6 +111,7 @@ function App() {
         <Webcam
           ref={webcamRef}
           muted={true} 
+          videoConstraints={videoConstraints}
           style={{
             position: "absolute",
             marginLeft: "auto",
@@ -108,8 +120,8 @@ function App() {
             right: 0,
             textAlign: "center",
             zindex: 9,
-            width: 640,
-            height: 480,
+            width: "auto",
+            height: "auto",
           }}
         />
 
@@ -123,11 +135,22 @@ function App() {
             right: 0,
             textAlign: "center",
             zindex: 8,
-            width: 640,
-            height: 480,
+            width: "auto",
+            height: "auto",
           }}
         />
-      </header>
+<button
+            onClick={switchCamera}
+            style={{
+              position: "absolute",
+              bottom: "20px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              zIndex: 9999,
+            }}
+          >
+            Switch Camera
+          </button>      </header>
     </div>
   );
 }
