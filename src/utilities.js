@@ -7,14 +7,16 @@ export const drawRect = (detections, ctx) =>{
     const text = prediction['class']; 
 
     // Set styling
-    const color = Math.floor(Math.random()*16777215).toString(16);
+    // const color = Math.floor(Math.random()*16777215).toString(16);
+    const color = text === "person" ? '00FF00' : 'FF0000'
     ctx.strokeStyle = '#' + color
-    ctx.font = '18px Arial';
+    ctx.font = 'bold 18px Arial';
 
     // Draw rectangles and text
     ctx.beginPath();   
     ctx.fillStyle = '#' + color
-    ctx.fillText(text, x, y);
+    ctx.fillText(text, x, y-7);
+    ctx.lineWidth = 4;
     ctx.rect(x, y, width, height); 
     ctx.stroke();
   });
