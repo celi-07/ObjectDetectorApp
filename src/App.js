@@ -9,7 +9,6 @@ import { drawRect } from "./utilities";
 function App() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const [spokenObjects, setSpokenObjects] = useState({}); // Tracks last spoken times for each object
   const [facingMode, setFacingMode] = useState("user");
 
   const videoConstraints = {
@@ -41,6 +40,7 @@ function App() {
 
   var videoWidth;
   var videoHeight;
+  var spokenObjects = {};
 
   const detect = async (net) => {
     // Check data is available
@@ -72,33 +72,33 @@ function App() {
       const currentObjects = new Set(objects.map((obj) => obj.class));
 
       // Iterate through detected objects
+      console.log("Objects"+JSON.stringify(objects))
+      console.log("SpokenObjects"+JSON.stringify(spokenObjects))
+
+      const newSpokenObjects = { ...spokenObjects };
+
       objects.forEach((obj) => {
         const { class: objectClass } = obj;
 
         // Check if this object was spoken about in the last 10 seconds
-        if (!spokenObjects[objectClass] || now - spokenObjects[objectClass] > 10000) {
+        if (!newSpokenObjects[objectClass] || now - newSpokenObjects[objectClass] > 10000) {
           // Speak the object
           const message = `I detected a ${objectClass} with ${(obj.score * 100).toFixed(2)} percent confidence.`;
           speak(message);
 
           // Update the spoken objects state
-          setSpokenObjects((prev) => ({
-            ...prev,
-            [objectClass]: now,
-          }));
+          newSpokenObjects[objectClass] = now;
         }
       });
 
       // Remove objects from spokenObjects that are no longer detected
-      setSpokenObjects((prev) => {
-        const updatedSpokenObjects = {};
-        for (const key in prev) {
-          if (currentObjects.has(key)) {
-            updatedSpokenObjects[key] = prev[key];
-          }
+      const updatedSpokenObjects = {};
+      for (const key in newSpokenObjects) {
+        if (currentObjects.has(key)) {
+          updatedSpokenObjects[key] = newSpokenObjects[key];
         }
-        return updatedSpokenObjects;
-      });
+      }
+      spokenObjects = updatedSpokenObjects;
 
       // Draw bounding boxes
       const ctx = canvasRef.current.getContext("2d");
@@ -121,6 +121,7 @@ function App() {
             marginRight: "auto",
             left: 0,
             right: 0,
+            top: 0,
             textAlign: "center",
             zindex: 9,
             width: videoWidth,
@@ -136,6 +137,7 @@ function App() {
             marginRight: "auto",
             left: 0,
             right: 0,
+            top: 0,
             textAlign: "center",
             zindex: 8,
             width: videoWidth,
