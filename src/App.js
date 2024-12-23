@@ -31,7 +31,6 @@ function App() {
     }, 10);
   };
 
-  // Text-to-Speech Function
   const speak = (message) => {
     const synth = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(message);
@@ -43,37 +42,29 @@ function App() {
   var spokenObjects = {};
 
   const detect = async (net) => {
-    // Check data is available
     if (
       typeof webcamRef.current !== "undefined" &&
       webcamRef.current !== null &&
       webcamRef.current.video.readyState === 4
     ) {
-      // Get Video Properties
       const video = webcamRef.current.video;
       videoWidth = webcamRef.current.video.videoWidth;
       videoHeight = webcamRef.current.video.videoHeight;
 
-      // Set video width
       webcamRef.current.video.width = videoWidth;
       webcamRef.current.video.height = videoHeight;
 
-      // Set canvas height and width
       canvasRef.current.width = videoWidth;
       canvasRef.current.height = videoHeight;
 
-      // Make Detections
       const objects = await net.detect(video);
 
-      // Get current time
       const now = Date.now();
 
-      // Create a set of currently detected object classes
       const currentObjects = new Set(objects.map((obj) => obj.class));
 
-      // Iterate through detected objects
-      console.log("Objects"+JSON.stringify(objects))
-      console.log("SpokenObjects"+JSON.stringify(spokenObjects))
+      // console.log("Objects"+JSON.stringify(objects))
+      // console.log("SpokenObjects"+JSON.stringify(spokenObjects))
 
       const newSpokenObjects = { ...spokenObjects };
 
