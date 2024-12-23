@@ -39,6 +39,9 @@ function App() {
     synth.speak(utterance);
   };
 
+  var videoWidth;
+  var videoHeight;
+
   const detect = async (net) => {
     // Check data is available
     if (
@@ -48,8 +51,8 @@ function App() {
     ) {
       // Get Video Properties
       const video = webcamRef.current.video;
-      const videoWidth = webcamRef.current.video.videoWidth;
-      const videoHeight = webcamRef.current.video.videoHeight;
+      videoWidth = webcamRef.current.video.videoWidth;
+      videoHeight = webcamRef.current.video.videoHeight;
 
       // Set video width
       webcamRef.current.video.width = videoWidth;
@@ -120,8 +123,8 @@ function App() {
             right: 0,
             textAlign: "center",
             zindex: 9,
-            maxwidth: "100%",
-            maxheight: "100%",
+            width: videoWidth,
+            height: videoHeight,
           }}
         />
 
@@ -135,8 +138,8 @@ function App() {
             right: 0,
             textAlign: "center",
             zindex: 8,
-            maxwidth: "100%",
-            maxheight: "100%",
+            width: videoWidth,
+            height: videoHeight,
           }}
         />
 <button
