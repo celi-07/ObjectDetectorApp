@@ -1,4 +1,5 @@
 # Vision Assistant - Real-Time Object Detection App
+https://github.com/celi-07/objectdetectorapp
 
 ## Overview
 A React application that helps visually impaired users identify objects in their environment using:
@@ -17,8 +18,8 @@ A React application that helps visually impaired users identify objects in their
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/vision-assistant.git
-cd vision-assistant
+git clone https://github.com/celi-07/objectdetectorapp.git
+cd objectdetectorapp
 npm install
 npm start
 ```
@@ -59,3 +60,6 @@ npm start
    - Detected objects
    - Approximate distances
    - Location in frame
+
+## Working Prototype
+https://celi-07.github.io/ObjectDetectorApp
