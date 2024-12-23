@@ -25,9 +25,9 @@ function App() {
   // Main function
   const runCoco = async () => {
     const net = await cocossd.load();
-    console.log("Handpose model loaded.");
+    // console.log("Handpose model loaded.");
     setLoading(false); // Set loading to false once the model is loaded
-    console.log("Model is loaded."+loading);
+    // console.log("Model is loaded."+loading);
     if (window.detectLoop) {
       clearInterval(window.detectLoop);
     }
@@ -132,7 +132,7 @@ function App() {
             height: videoHeight,
           }}
         />
-        {loading ? (
+        {loading && (
           <div
             style={{
               position: "absolute",
@@ -150,7 +150,7 @@ function App() {
           >
             <h2>Model is loading...</h2>
           </div>
-        ) : null}
+        )}
         
         <canvas
           ref={canvasRef}
