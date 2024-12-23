@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/ObjectDetectorApp/static/css/main.cf2f595b.css",
-    "main.js": "/ObjectDetectorApp/static/js/main.7a7ff41a.js",
+    "main.css": "/ObjectDetectorApp/static/css/main.c636974b.css",
+    "main.js": "/ObjectDetectorApp/static/js/main.a5b1f21c.js",
     "index.html": "/ObjectDetectorApp/index.html",
-    "main.cf2f595b.css.map": "/ObjectDetectorApp/static/css/main.cf2f595b.css.map",
-    "main.7a7ff41a.js.map": "/ObjectDetectorApp/static/js/main.7a7ff41a.js.map"
+    "main.c636974b.css.map": "/ObjectDetectorApp/static/css/main.c636974b.css.map",
+    "main.a5b1f21c.js.map": "/ObjectDetectorApp/static/js/main.a5b1f21c.js.map"
   },
   "entrypoints": [
-    "static/css/main.cf2f595b.css",
-    "static/js/main.7a7ff41a.js"
+    "static/css/main.c636974b.css",
+    "static/js/main.a5b1f21c.js"
   ]
 }
