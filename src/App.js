@@ -120,8 +120,8 @@ function App() {
             right: 0,
             textAlign: "center",
             zindex: 9,
-            width: "100%",
-            height: "auto",
+            maxwidth: "100%",
+            maxheight: "100%",
           }}
         />
 
@@ -135,8 +135,8 @@ function App() {
             right: 0,
             textAlign: "center",
             zindex: 8,
-            width: "100%",
-            height: "auto",
+            maxwidth: "100%",
+            maxheight: "100%",
           }}
         />
 <button
