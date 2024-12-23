@@ -9,6 +9,7 @@ import { drawRect } from "./utilities";
 function App() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
+  const [loading, setLoading] = useState(true);
   const [facingMode, setFacingMode] = useState("user");
 
   const videoConstraints = {
@@ -25,10 +26,14 @@ function App() {
   const runCoco = async () => {
     const net = await cocossd.load();
     console.log("Handpose model loaded.");
-    //  Loop and detect hands
-    setInterval(() => {
+    setLoading(false); // Set loading to false once the model is loaded
+    console.log("Model is loaded."+loading);
+    if (window.detectLoop) {
+      clearInterval(window.detectLoop);
+    }
+    window.detectLoop = setInterval(() => {
       detect(net);
-    }, 10);
+    }, 50);
   };
 
   const speak = (message) => {
@@ -72,9 +77,14 @@ function App() {
         const { class: objectClass } = obj;
 
         // Check if this object was spoken about in the last 10 seconds
-        if (!newSpokenObjects[objectClass] || now - newSpokenObjects[objectClass] > 10000) {
+        if (
+          !newSpokenObjects[objectClass] ||
+          now - newSpokenObjects[objectClass] > 10000
+        ) {
           // Speak the object
-          const message = `I detected a ${objectClass} with ${(obj.score * 100).toFixed(2)} percent confidence.`;
+          const message = `I detected a ${objectClass} with ${(
+            obj.score * 100
+          ).toFixed(2)} percent confidence.`;
           speak(message);
           // console.log(message)
 
@@ -98,14 +108,16 @@ function App() {
     }
   };
 
-  useEffect(()=>{runCoco()},[]);
+  useEffect(() => {
+    runCoco();
+  }, []);
 
   return (
     <div className="App">
       <header className="App-header">
         <Webcam
           ref={webcamRef}
-          muted={true} 
+          muted={true}
           videoConstraints={videoConstraints}
           style={{
             position: "absolute",
@@ -120,7 +132,26 @@ function App() {
             height: videoHeight,
           }}
         />
-
+        {loading ? (
+          <div
+            style={{
+              position: "absolute",
+              marginLeft: "auto",
+              marginRight: "auto",
+              left: 0,
+              right: 0,
+              top: 0,
+              width: "100%",
+              height: "100%",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              textAlign: "center",
+              zindex: 10,
+            }}
+          >
+            <h2>Model is loading...</h2>
+          </div>
+        ) : null}
+        
         <canvas
           ref={canvasRef}
           style={{
@@ -136,18 +167,19 @@ function App() {
             height: videoHeight,
           }}
         />
-<button
-            onClick={switchCamera}
-            style={{
-              position: "absolute",
-              bottom: "20px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              zIndex: 9999,
-            }}
-          >
-            Switch Camera
-          </button>
+        
+        <button
+          onClick={switchCamera}
+          style={{
+            position: "absolute",
+            bottom: "20px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 10,
+          }}
+        >
+          Switch Camera
+        </button>
       </header>
     </div>
   );
