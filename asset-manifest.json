@@ -1,22 +1,13 @@
 {
   "files": {
-    "main.css": "/ObjectDetectorApp/static/css/main.523f09c5.chunk.css",
-    "main.js": "/ObjectDetectorApp/static/js/main.bbf8eb95.chunk.js",
-    "main.js.map": "/ObjectDetectorApp/static/js/main.bbf8eb95.chunk.js.map",
-    "runtime-main.js": "/ObjectDetectorApp/static/js/runtime-main.9b5cd7d0.js",
-    "runtime-main.js.map": "/ObjectDetectorApp/static/js/runtime-main.9b5cd7d0.js.map",
-    "static/js/2.1db57c82.chunk.js": "/ObjectDetectorApp/static/js/2.1db57c82.chunk.js",
-    "static/js/2.1db57c82.chunk.js.map": "/ObjectDetectorApp/static/js/2.1db57c82.chunk.js.map",
+    "main.css": "/ObjectDetectorApp/static/css/main.f855e6bc.css",
+    "main.js": "/ObjectDetectorApp/static/js/main.c777b180.js",
     "index.html": "/ObjectDetectorApp/index.html",
-    "precache-manifest.d50a67b57253f4604eb7fa56db02f5e3.js": "/ObjectDetectorApp/precache-manifest.d50a67b57253f4604eb7fa56db02f5e3.js",
-    "service-worker.js": "/ObjectDetectorApp/service-worker.js",
-    "static/css/main.523f09c5.chunk.css.map": "/ObjectDetectorApp/static/css/main.523f09c5.chunk.css.map",
-    "static/js/2.1db57c82.chunk.js.LICENSE.txt": "/ObjectDetectorApp/static/js/2.1db57c82.chunk.js.LICENSE.txt"
+    "main.f855e6bc.css.map": "/ObjectDetectorApp/static/css/main.f855e6bc.css.map",
+    "main.c777b180.js.map": "/ObjectDetectorApp/static/js/main.c777b180.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.9b5cd7d0.js",
-    "static/js/2.1db57c82.chunk.js",
-    "static/css/main.523f09c5.chunk.css",
-    "static/js/main.bbf8eb95.chunk.js"
+    "static/css/main.f855e6bc.css",
+    "static/js/main.c777b180.js"
   ]
 }
