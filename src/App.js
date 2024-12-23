@@ -76,6 +76,7 @@ function App() {
           // Speak the object
           const message = `I detected a ${objectClass} with ${(obj.score * 100).toFixed(2)} percent confidence.`;
           speak(message);
+          // console.log(message)
 
           // Update the spoken objects state
           newSpokenObjects[objectClass] = now;
